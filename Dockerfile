@@ -1,13 +1,14 @@
 FROM jetty:9.4.27-jre11-slim
 
-COPY ./target/hapi-fhir-jpaserver.war /var/lib/jetty/webapps/ROOT.war
+COPY ./target/hapi-fhir-jpaserver.war /hapi/hapi-fhir-jpaserver.war
+COPY ./src/main/resources/magic8ball-context.xml /var/lib/jetty/webapps/magic8ball-context.xml
 
 # Copy the default config file to the config directory location. It might be overridden by the docker host.
-COPY ./src/main/resources/hapi.properties /hapi-config/hapi.properties
+COPY ./src/main/resources/hapi.properties /hapi/hapi.properties
 
 USER jetty:jetty
 EXPOSE 8080
-CMD ["java", "-Xmx8g", "-jar","/usr/local/jetty/start.jar", "-Dhapi.properties=/hapi-config/hapi.properties"]
+CMD ["java", "-Xmx8g", "-jar","/usr/local/jetty/start.jar", "-Dhapi.properties=/hapi/hapi.properties"]
 
 
 #FROM hapiproject/hapi:base as build-hapi
