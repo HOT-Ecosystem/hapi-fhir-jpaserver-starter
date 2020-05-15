@@ -11,7 +11,7 @@
     <parent>
         <groupId>ca.uhn.hapi.fhir</groupId>
         <artifactId>hapi-fhir</artifactId>
-        <version>5.0.0</version>
+        <version>5.1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>hapi-fhir-jpaserver-starter</artifactId>
@@ -19,6 +19,10 @@
     <prerequisites>
         <maven>3.5.0</maven>
     </prerequisites>
+
+    <properties>
+        <jetty_version>9.4.28.v20200408</jetty_version>
+    </properties>
 
     <dependencies>
         <dependency>
